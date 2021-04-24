@@ -184,7 +184,7 @@ include_once 'header.php';
 
     });
   </script>
-  <!-- /.content-wrapper -->
+ 
 
   <?php
 include_once 'footer.php';
