@@ -17,40 +17,40 @@ return $output;
 if(isset($_POST['btnsaveorder'])){
   $customer_name=$_POST['txtcustomer'];
   $order_date=date('Y-m-d',strtotime($_POST['orderdate']));
-  /*$subtotal=$_POST['txtsubtotal'];
+  $subtotal=$_POST['txtsubtotal'];
   $tax=$_POST['txttax'];
   $discount=$_POST['txtdiscount'];
   $total=$_POST['txttotal'];
   $paid=$_POST['txtpaid'];
   $due=$_POST['txtdue'];
-  $payment_type=$_POST['rb'];*/
+  $payment_type=$_POST['rb'];
 
  
- /*$arr_productid=$_POST['productid'];
+ $arr_productid=$_POST['productid'];
       $arr_productname=$_POST['productname'];
       $arr_stock=$_POST['stock'];
       $arr_qty=$_POST['qty'];
       $arr_price=$_POST['price'];
-      $arr_total=$_POST['total'];*/
+      $arr_total=$_POST['total'];
 
 
   $insert=$pdo->prepare("insert into tbl_invoce(customer_name, order_date) values(:cust, :orderdate, )");
 
   $insert->bindParam(':cust',$customer_name);
   $insert->bindParam(':orderdate', $order_date);
-  /*$insert->bindParam(':stotal',$subtotal);
+  $insert->bindParam(':stotal',$subtotal);
   $insert->bindParam(':tax',$tax);
   $insert->bindParam(':disc',$discount);
   $insert->bindParam(':total',$total);
   $insert->bindParam(':paid',$paid);
   $insert->bindParam(':due',$due);
-  $insert->bindParam(':ptype',$payment_type);*/
+  $insert->bindParam(':ptype',$payment_type);
 
   $insert->execute();
 
   ///insert for invoce details
 
- /*$invoice_id=$pdo->lastInsertId();
+ $invoice_id=$pdo->lastInsertId();
   if($invoice_id!=null){
     for($i=0; $i<count($arr_productid); $i++){
 
@@ -68,7 +68,7 @@ if(isset($_POST['btnsaveorder'])){
 
       echo "oreder created succesfully";
     }
-  }*/
+  }
 
 }
 
