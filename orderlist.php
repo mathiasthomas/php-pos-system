@@ -67,10 +67,10 @@ include_once 'header.php';
                                 <td>'.$row->due.'</td>
                                 <td>'.$row->payment_type.'</td>
                                 <td>
-                                <a href="viewproduct.php?id='.$row->invoice_id.'" class="btn btn-success" role="button"><span class="glyphicon glyphicon-eye-open" style="color:#ffffff"  data-toggle="tooltip" title="print invoice"></span></a>
+                                <a href="viewproduct.php?id='.$row->invoice_id.'" class="btn btn-success" role="button"><span class="glyphicon glyphicon-print" style="color:#ffffff"  data-toggle="tooltip" title="print invoice"></span></a>
                                 </td>
                                 <td>
-                                <a href="editproduct.php?id='.$row->invoice_id.'" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-edit" title="edit oredr"></span></a>
+                                <a href="editorder.php?id='.$row->invoice_id.'" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-edit" title="edit order"></span></a>
                                 </td>
                                 <td>
                                 <button id='.$row->invoice_id.' class="btn  btn-danger btndelete" ><span class="glyphicon glyphicon-trash" style="color:#ffffff"  data-toggle="tooltip" title="delete order"></span></button>
@@ -91,7 +91,7 @@ include_once 'header.php';
   <!-- /.content-wrapper -->
   <script>
    $(document).ready(function(){
-     $('orderlisttable').DataTable({
+     $('#orderlisttable').DataTable({
        "order":[[0,"desc"]]
      });
    });
