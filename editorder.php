@@ -37,7 +37,7 @@ $discount=$row['discount'];
 $total=$row['total'];
 $paid=$row['paid'];
 $due=$row['due'];
-$payment_type=$row['	payment_type'];
+$payment_type=$row['payment_type'];
 
 
 if(isset($_POST['btnupdateorder'])){
@@ -267,7 +267,7 @@ include_once'header.php';
 
 
 
-        <input type="text" class="form-control" name="txtsubtotal" id="txtsubtotal" required readonly >
+        <input type="text" class="form-control" name="txtsubtotal" id="txtsubtotal" value="<?php echo $subtotal; ?>" required readonly >
                             </div>
                         </div>
 
@@ -279,7 +279,7 @@ include_once'header.php';
                                 </div>
 
 
-        <input type="text" class="form-control" name="txttax" id="txttax" required readonly>
+        <input type="text" class="form-control" name="txttax" id="txttax" value="<?php echo $tax; ?>" required readonly>
                             </div>
                         </div>
 
@@ -290,7 +290,7 @@ include_once'header.php';
                                 <div class="input-group-addon">
                                     <i class="fa fa-usd"></i>
                                 </div>
-                 <input type="text" class="form-control" name="txtdiscount" id="txtdiscount" required>
+                 <input type="text" class="form-control" name="txtdiscount" id="txtdiscount" value="<?php echo $discount; ?>" required>
                             </div>
                         </div>
 
@@ -308,7 +308,7 @@ include_once'header.php';
                                     <i class="fa fa-usd"></i>
                                 </div>
 
-                    <input type="text" class="form-control" name="txttotal" id="txttotal"  value="<?php echo $subtotal; ?>" required readonly>
+                    <input type="text" class="form-control" name="txttotal" id="txttotal"  value="<?php echo $total; ?>" required readonly>
                             </div>
                         </div>
 
@@ -322,7 +322,7 @@ include_once'header.php';
                                     <i class="fa fa-usd"></i>
                                 </div>
 
-                                <input type="text" class="form-control" name="txtpaid"  id="txtpaid" required>
+                                <input type="text" class="form-control" name="txtpaid"  id="txtpaid" value="<?php echo $paid; ?>" required>
                             </div>
                         </div>
 
@@ -332,7 +332,7 @@ include_once'header.php';
                                 <div class="input-group-addon">
                                     <i class="fa fa-usd"></i>
                                 </div>
-                                <input type="text" class="form-control" name="txtdue" id="txtdue" required readonly>
+                                <input type="text" class="form-control" name="txtdue" id="txtdue" value="<?php echo $due; ?>" required readonly>
                             </div>
                         </div>
 
@@ -368,7 +368,7 @@ include_once'header.php';
 
                 <div align="center">
 
-                    <input type="submit" name="btnupdateorder" value="Save Order" class="btn btn-info">
+                    <input type="submit" name="btnupdateorder" value="Update Order" class="btn btn-success">
 
                 </div>
 
