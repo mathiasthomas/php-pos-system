@@ -335,8 +335,8 @@ include_once'header.php';
                                 <input type="radio" name="rb" class="minimal-red" value="Card"> CARD
                             </label>
                             <label>
-                                <input type="radio" name="rb" class="minimal-red" value="Check">
-                                CHECK
+                                <input type="radio" name="rb" class="minimal-red" value="Cheque">
+                                CHEQUE
                             </label>
                         </div>
 

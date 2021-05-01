@@ -345,14 +345,14 @@ include_once'header.php';
                         <div class="form-group">
 
                             <label>
-                                <input type="radio" name="rb" class="minimal-red" value="Cash" checked> CASH
+                                <input type="radio" name="rb" class="minimal-red" value="Cash" <?php echo($payment_type=='Cash')?'checked':''?> > CASH
                             </label>
                             <label>
-                                <input type="radio" name="rb" class="minimal-red" value="Card"> CARD
+                                <input type="radio" name="rb" class="minimal-red" value="Card"  <?php echo($payment_type=='Card')?'checked':''?> > CARD
                             </label>
                             <label>
-                                <input type="radio" name="rb" class="minimal-red" value="Check">
-                                CHECK
+                                <input type="radio" name="rb" class="minimal-red" value="Cheque" <?php echo ($payment_type=='Cheque')?'checked':''?>>
+                                CHEQUE
                             </label>
                         </div>
 
