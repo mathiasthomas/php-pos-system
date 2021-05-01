@@ -266,7 +266,7 @@ include_once'header.php';
 
                               echo'<td><input type="hidden" class="form-control pname" name="productname[]" readonly></td>';
                                         
-                              echo'<td><select class="form-control productid" name="productid[]" style="width: 250px";><option value="">Select Option</option> '.fill_product($pdo,$item_invoice_details['product_id']).' </select></td>';
+                              echo'<td><select class="form-control productidedit" name="productid[]" style="width: 250px";><option value="">Select Option</option> '.fill_product($pdo,$item_invoice_details['product_id']).' </select></td>';
                                         
                               echo'<td><input type="text" class="form-control stock" name="stock[]" value="'.$row_product['pstock'].'"  readonly></td>';
                               echo'<td><input type="text" class="form-control price" name="price[]" value="'.$row_product['saleprice'].'" readonly></td>';
@@ -439,6 +439,31 @@ include_once'header.php';
     
     
     $(document).ready(function(){
+
+              //Initialize Select2 Elements
+    $('.productidedit').select2()
+        
+        $(".productidedit").on('change' , function(e){
+            
+       var productid = this.value;
+        var tr=$(this).parent().parent();  
+          $.ajax({
+              
+           url:"getproduct.php",
+           method:"get",
+           data:{id:productid},
+           success:function(data){
+               
+            //console.log(data); 
+      tr.find(".pname").val(data["pname"]);
+       tr.find(".stock").val(data["pstock"]);
+       tr.find(".price").val(data["saleprice"]); 
+       tr.find(".qty").val(1);
+       tr.find(".total").val( tr.find(".qty").val() *  tr.find(".price").val()); 
+           calculate(0,0); 
+           }   
+    })   
+    })
         
     $(document).on('click','.btnadd',function(){
     
@@ -447,7 +472,7 @@ html+='<tr>';
         
 html+='<td><input type="hidden" class="form-control pname" name="productname[]" readonly></td>';
         
-html+='<td><select class="form-control productid" name="productid[]" style="width: 250px";><option value="">Select Option</option><?php echo fill_product($pdo); ?> </select></td>';
+html+='<td><select class="form-control productid" name="productid[]" style="width: 250px";><option value="">Select Option</option><?php echo fill_product($pdo,''); ?> </select></td>';
         
 html+='<td><input type="text" class="form-control stock" name="stock[]" readonly></td>';
 html+='<td><input type="text" class="form-control price" name="price[]" readonly></td>';
