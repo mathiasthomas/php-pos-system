@@ -4,7 +4,7 @@ include_once'connectdb.php';
 
 session_start();
 
-function fill_product($pdo){
+function fill_product($pdo,$pid){
     
 $output='';
     
@@ -15,7 +15,12 @@ $result=$select->fetchAll();
     
 foreach($result as $row){
     
-$output.='<option value="'.$row["p_id"].'">'.$row["pname"].'</option>';    
+$output.='<option value="'.$row["p_id"].'"';
+if($pid==$row['p_id']){
+    $output.='selected';
+}
+$output.='>'.$row["pname"].'</option>';
+    
     
 }    
     
@@ -250,7 +255,7 @@ include_once'header.php';
                             <?php 
 
                                 foreach($row_invoice_details as $item_invoice_details){
-                                    $select=$pdo->prepare("select * from tbl_roduct where p_id='{$item_invoice_details['product_id']}'");
+                                    $select=$pdo->prepare("select * from tbl_product where p_id='{$item_invoice_details['product_id']}'");
                                     $select->execute();
 
                                     $row_product=$select->fetch(PDO::FETCH_ASSOC);
