@@ -39,6 +39,11 @@ $paid=$row['paid'];
 $due=$row['due'];
 $payment_type=$row['payment_type'];
 
+$select=$pdo->prepare("select * from tbl_invoice_details where invoice_id=$id");
+$select->execute();
+$row_invoice_details=$select->fetchAll(PDO::FETCH_ASSOC);
+
+
 
 if(isset($_POST['btnupdateorder'])){
     
@@ -242,6 +247,31 @@ include_once'header.php';
                                 </tr>
 
                             </thead>
+                            <?php 
+
+                                foreach($row_invoice_details as $item_invoice_details){
+                                    $select=$pdo->prepare("select * from tbl_roduct where p_id='{$item_invoice_details['product_id']}'");
+                                    $select->execute();
+
+                                    $row_product=$select->fetch(PDO::FETCH_ASSOC);
+
+                            ?>
+                            <tr>
+                            <?php 
+
+                              echo'<td><input type="hidden" class="form-control pname" name="productname[]" readonly></td>';
+                                        
+                              echo'<td><select class="form-control productid" name="productid[]" style="width: 250px";><option value="">Select Option</option> '.fill_product($pdo,$item_invoice_details['product_id']).' </select></td>';
+                                        
+                              echo'<td><input type="text" class="form-control stock" name="stock[]" value="'.$row_product['pstock'].'"  readonly></td>';
+                              echo'<td><input type="text" class="form-control price" name="price[]" value="'.$row_product['saleprice'].'" readonly></td>';
+                              echo'<td><input type="number" min="1" class="form-control qty" name="qty[]" value="'.$item_invoice_details['qty'].'" ></td>';
+                              echo'<td><input type="text" class="form-control total" name="total[]" value="'.$row_product['saleprice']*$item_invoice_details['qty'].'" readonly></td>';
+                              echo'<td><center><button type="button" name="remove" class="btn btn-danger btn-sm btnremove"><span class="glyphicon glyphicon-remove"></span></button><center></td></center>';
+                            ?>
+                            
+                            </tr>
+                            <?php } ?>
 
 
                         </table></div>
